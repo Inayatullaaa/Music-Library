@@ -1,22 +1,30 @@
 package Project;
 
-public class Song {
+import java.util.Objects;
 
-
-    private String songName;
-    private String songDuration;
-    private String songGenre;
+public class Song extends MusicItem {
 
     // constructors
 
-    public Song(String songName, String songDuration, String songGenre){
+    public Song(String songName, Artist artist, String songDuration, String songGenre){
         this.songName = songName;
-        this.songDuration = songDuration; //Attribute initialization
+        this.artist = artist;
+        this.durationInSeconds = songDuration; //Attribute initialization
         this.songGenre = songGenre;
     }
 
 
+    private String songName;                // Song title
+    private String durationInSeconds;       // Song duration in seconds
+    private String songGenre;               // Song genre
+    private Artist artist;                  // The artist who performed the song
+
+
+
     //getters and setters
+
+    public Artist getArtist(){return artist;}
+    public void setArtist(Artist artist){this.artist = artist;}
 
     public String getSongName() {
         return songName;
@@ -25,12 +33,14 @@ public class Song {
         this.songName = songName;
     }
 
+
     public String getSongDuration(){
-        return songDuration;
+        return durationInSeconds;
     }
     public void setSongDuration(String songDuration){
-        this.songDuration = songDuration;
+        this.durationInSeconds = songDuration;
     }
+
 
     public String getSongGenre(){
         return songGenre;
@@ -39,8 +49,36 @@ public class Song {
         this.songGenre = songGenre;
     }
 
-    // Methods
-    public void printSongDetails(){
-        System.out.println("Song: " + songName + ", Duration: " + songDuration + ", Genre: " + songGenre );
+    // Переопределение метода printDetails() для вывода информации о песне
+    @Override
+    public void printDetails() {
+        System.out.println("Song: " + songName + ", Artist: " + artist.getArtistName() + ", Duration: " + durationInSeconds + " seconds, Genre: " + songGenre);
+    }
+
+    // Overriding the toString() method
+    @Override
+    public String toString(){
+        return "Song: " + songName + ", Artist: " + artist.getArtistName() + ", Duration: " + durationInSeconds + ", Genre: " + songGenre;
+    }
+
+
+    // Override equals() method to compare songs by name and artist
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Song song = (Song) o;
+        return songName.equals(song.songName) && artist.equals(song.artist);
+    }
+
+
+    // Overriding the hashCode() method for correct work with collections
+    @Override
+    public int hashCode(){
+        return Objects.hash(songName, artist);
+    }
+
+    public void printSongDetails() {
+
     }
 }
