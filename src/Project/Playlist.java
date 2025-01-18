@@ -22,6 +22,27 @@ public class Playlist {
         songs.add(song);
     }
 
+    // Method for displaying information about all songs in a playlist
+    public void printPlaylistDetails(){
+        if (songs.isEmpty()) {
+            System.out.println("Playlist is empty");
+        } else {
+            System.out.println("Playlist: " + namePlaylist);
+            for (Song song : songs) {
+                song.printDetails(); // Display information about each song
+            }
+        }
+    }
+
+    // Search for a song by title
+    public Song searchByName(String name){
+        for (Song song : songs){
+            if (song.getSongName().equalsIgnoreCase(name)){
+                return song;
+            }
+        }
+        return null;    // If the song is not found
+    }
 
     // Filter songs by genre
     public ArrayList<Song> filterByGenre(String genre) {
@@ -35,15 +56,17 @@ public class Playlist {
     }
 
 
-    // Search for a song by title
-    public Song searchByName(String name){
+    public boolean removeSongByName(String songName){
         for (Song song : songs){
-            if (song.getSongName().equalsIgnoreCase(name)){
-                return song;
+            if (song.getSongName().equalsIgnoreCase(songName)){
+                songs.remove(song);
+                System.out.println("Song removed: " + song.toString());
+                return true; // Song deleted
             }
         }
-        return null;    // If the song is not found
+        return false;// Song not found
     }
+
 
 
     // Sort songs by artist
@@ -55,12 +78,9 @@ public class Playlist {
         songs.sort(Comparator.comparing(Song::getSongGenre));
     }
 
-    // Method for displaying information about all songs in a playlist
-    public void printPlaylistDetails(){
-        System.out.println("Playlist: " + namePlaylist);
-        for (Song song : songs) {
-            song.printSongDetails(); // Display information about each song
-        }
-    }
+
+
+
+
 }
 

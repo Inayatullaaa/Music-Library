@@ -5,6 +5,3 @@ package Project;
 public abstract class MusicItem {
     public abstract void printDetails();  // Method for outputting information about the object
 }
-
-
-

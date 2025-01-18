@@ -49,7 +49,7 @@ public class Song extends MusicItem {
         this.songGenre = songGenre;
     }
 
-    // Переопределение метода printDetails() для вывода информации о песне
+    // Override the printDetails() method to output song information
     @Override
     public void printDetails() {
         System.out.println("Song: " + songName + ", Artist: " + artist.getArtistName() + ", Duration: " + durationInSeconds + " seconds, Genre: " + songGenre);

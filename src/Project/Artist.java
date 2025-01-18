@@ -11,7 +11,7 @@ public class Artist {
         this.popularity = popularity;
     }
 
-    // Аттрибуты класса
+
     private String artistName;
     private int startYear;
     private double popularity;
@@ -21,7 +21,6 @@ public class Artist {
     public String getArtistName() {
         return artistName;
     }
-
     public void setArtistName(String ArtistName) {
         this.artistName = ArtistName;
     }
@@ -29,7 +28,6 @@ public class Artist {
     public int getStartDay() {
         return startYear;
     }
-
     public void setStartDay(int startDay) {
         this.startYear = startDay;
     }
@@ -37,7 +35,6 @@ public class Artist {
     public double getPopularity() {
         return popularity;
     }
-
     public void setPopularity(double popularity) {
         this.popularity = popularity;
     }
